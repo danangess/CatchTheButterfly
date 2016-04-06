@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Catch The Butterfly</string>
+    <string name="location">Location</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="range">Range</string>
+    <string name="insert">Insert</string>
+    <string name="location_name">Location Name</string>
+    <string name="save">Save</string>
+    <string name="insert_data">Insert Data</string>
+</resources>

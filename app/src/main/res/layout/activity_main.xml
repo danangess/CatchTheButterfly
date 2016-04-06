@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:id="@+id/main_layout"
+    tools:context="id.miehasiswa.game.catchthebutterfly.MainActivity"
+    android:weightSum="1">
+
+    <LinearLayout
+        android:id="@+id/linearDisplayLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|center_vertical"
+            android:layout_marginBottom="@android:dimen/app_icon_size"
+            android:text="@string/location"
+            android:textSize="35sp"
+            android:textStyle="bold" />
+        <ListView
+            android:id="@+id/list_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@android:dimen/notification_large_icon_height"
+            android:longClickable="true">
+        </ListView>
+    </LinearLayout>
+    <Button
+        android:onClick="bInsert"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/insert"
+        android:id="@+id/bInsert"
+        android:textSize="20sp"
+        android:textColor="@android:color/background_light"
+        android:background="@color/colorPrimaryDark"
+        android:layout_gravity="center_vertical|bottom" />
+</FrameLayout>
