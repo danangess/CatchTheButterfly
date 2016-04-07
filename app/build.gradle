@@ -1,13 +1,13 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    compileSdkVersion 21
+    buildToolsVersion "23.0.2"
 
     defaultConfig {
         applicationId "id.miehasiswa.game.catchthebutterfly"
         minSdkVersion 15
-        targetSdkVersion 23
+        targetSdkVersion 21
         versionCode 1
         versionName "0.1"
     }
