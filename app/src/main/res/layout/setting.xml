@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/SETTING"
+        android:id="@+id/tVSetting"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Volume"
+        android:id="@+id/tVVolume"
+        android:layout_gravity="center"
+        android:layout_marginTop="65dp"
+        android:layout_below="@+id/tVSetting"
+        android:layout_toLeftOf="@+id/tVSetting"
+        android:layout_toStartOf="@+id/tVSetting"
+        android:layout_marginRight="42dp"
+        android:layout_marginEnd="42dp" />
+
+    <SeekBar
+        android:id="@+id/volume_bar"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="0"
+        android:progressDrawable="@drawable/progressbar"
+        android:secondaryProgress="0"
+        android:layout_below="@+id/tVVolume"
+        android:layout_centerHorizontal="true" />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Mute"
+        android:id="@+id/tVMute"
+        android:checked="false"
+        android:layout_below="@+id/volume_bar"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="40dp"
+        android:layout_marginEnd="40dp" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="APPLY"
+        android:id="@+id/bApply"
+        android:layout_marginBottom="63dp"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/tVSetting"
+        android:layout_toStartOf="@+id/tVSetting" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="DEFAULT"
+        android:id="@+id/bDefault"
+        android:layout_alignTop="@+id/bApply"
+        android:layout_toRightOf="@+id/tVSetting"
+        android:layout_toEndOf="@+id/tVSetting" />
+
+</RelativeLayout>
