@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">Tangkap Kupu-Kupu</string>
+    <string name="location">Lokasi</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="range">Jarak</string>
+    <string name="insert">Masukkan</string>
+    <string name="location_name">Nama Lokasi</string>
+    <string name="save">Simpan</string>
+    <string name="insert_data">Masukkan Data</string>
+</resources>
