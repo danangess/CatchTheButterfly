@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 
 /**
  * Created by danang on 05/04/16.
@@ -22,45 +21,34 @@ public class DMLActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         Intent intent = getIntent();
         UPDATE = intent.getBooleanExtra("UPDATE", false);
-
-        if (UPDATE) {
-            L = new LocationModel();
-            L.setId(intent.getStringExtra("id"));
-            L.setLocation(intent.getStringExtra("location"));
-            L.setLatitude(intent.getStringExtra("latitude"));
-            L.setLongitude(intent.getStringExtra("longitude"));
-            L.setRange(intent.getStringExtra("range"));
-            update(L);
-        } else {
-            setContentView(R.layout.location_dml);
-        }
-    }
-
-    public void update(LocationModel locate) {
         setContentView(R.layout.location_dml);
 
         EditText eTLocation = (EditText) findViewById(R.id.eTLocation);
         EditText eTLatitude = (EditText) findViewById(R.id.eTLatitude);
         EditText eTLongitude = (EditText) findViewById(R.id.eTLongitude);
         EditText eTRange = (EditText) findViewById(R.id.eTRange);
-        TextView tVId = (TextView) findViewById(R.id.tVId);
 
-        tVId.setTag(locate.getId());
-        eTLocation.setText(locate.getLocation());
-        eTLatitude.setText(locate.getLatitude());
-        eTLongitude.setText(locate.getLongitude());
-        eTRange.setText(locate.getRange());
+        L = new LocationModel();
+
+        if (UPDATE) { L.setId(intent.getStringExtra("id")); };
+        L.setLocation(intent.getStringExtra("location"));
+        L.setLatitude(intent.getStringExtra("latitude"));
+        L.setLongitude(intent.getStringExtra("longitude"));
+        L.setRange(intent.getStringExtra("range"));
+
+        eTLocation.setText(L.getLocation());
+        eTLatitude.setText(L.getLatitude());
+        eTLongitude.setText(L.getLongitude());
+        eTRange.setText(L.getRange());
     }
 
     public void Save(View v) {
-        TextView tVId = (TextView) findViewById(R.id.tVId);
         EditText eTLocation = (EditText) findViewById(R.id.eTLocation);
         EditText eTLatitude = (EditText) findViewById(R.id.eTLatitude);
         EditText eTLongitude = (EditText) findViewById(R.id.eTLongitude);
         EditText eTRange = (EditText) findViewById(R.id.eTRange);
 
-        L = new LocationModel();
-        if (UPDATE) L.setId(tVId.getTag().toString());
+        if (UPDATE) L.setId(L.getId());
         L.setLocation(eTLocation.getText().toString());
         L.setLatitude(eTLatitude.getText().toString());
         L.setLongitude(eTLongitude.getText().toString());
@@ -71,10 +59,7 @@ public class DMLActivity extends AppCompatActivity {
         } else {
             db.insertLocation(L);
         }
-
-        Intent intent = new Intent(DMLActivity.this, MainActivity.class);
-        DMLActivity.this.startActivity(intent);
-        finish();
+        stop();
     }
 
     public void deleteLocation(LocationModel locate) {
@@ -95,9 +80,7 @@ public class DMLActivity extends AppCompatActivity {
         back.setNegativeButton("Discard", new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
-                Intent intent = new Intent(DMLActivity.this, MainActivity.class);
-                DMLActivity.this.startActivity(intent);
-                finish();
+                stop();
             }
         });
         back.setNeutralButton("Cancel", new DialogInterface.OnClickListener() {
@@ -111,12 +94,16 @@ public class DMLActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    protected void stop() {
+        Intent intent = new Intent(DMLActivity.this, MainActivity.class);
+        DMLActivity.this.startActivity(intent);
         finish();
     }
 }

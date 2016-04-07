@@ -127,7 +127,7 @@ public class MainActivity extends AppCompatActivity {
         delete.setTitle("Exit?");
         delete.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) { onStop();onDestroy(); }
+            public void onClick(DialogInterface dialog, int which) { finish();onDestroy(); }
         });
         delete.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
@@ -139,12 +139,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        finish();
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        finish();
     }
 }
