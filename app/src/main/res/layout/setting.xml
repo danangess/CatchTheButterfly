@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Mute"
-        android:id="@+id/tVMute"
+        android:id="@+id/cBMute"
         android:checked="false"
         android:layout_below="@+id/volume_bar"
         android:layout_alignParentRight="true"
@@ -50,6 +50,7 @@
         android:layout_marginEnd="40dp" />
 
     <Button
+        android:onClick="bApply"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -66,6 +67,7 @@
         android:layout_height="wrap_content"
         android:text="DEFAULT"
         android:id="@+id/bDefault"
+        android:onClick="bDefault"
         android:layout_alignTop="@+id/bApply"
         android:layout_toRightOf="@+id/tVSetting"
         android:layout_toEndOf="@+id/tVSetting" />
