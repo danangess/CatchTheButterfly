@@ -30,7 +30,7 @@ public class DMLActivity extends AppCompatActivity {
 
         L = new LocationModel();
 
-        if (UPDATE) { L.setId(intent.getStringExtra("id")); };
+        if (UPDATE) L.setId(intent.getStringExtra("id"));
         L.setLocation(intent.getStringExtra("location"));
         L.setLatitude(intent.getStringExtra("latitude"));
         L.setLongitude(intent.getStringExtra("longitude"));

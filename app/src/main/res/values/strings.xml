@@ -8,5 +8,10 @@
     <string name="location_name">Location Name</string>
     <string name="save">Save</string>
     <string name="insert_data">Insert Data</string>
+<<<<<<< HEAD
     <string name="settings">Settings</string>
+=======
+    <string name="action_settings">Setting</string>
+    <string name="SETTING">SETTING</string>
+>>>>>>> 65bd7ae3c1bf70e1e7bf194e31a540d1327ee10c
 </resources>

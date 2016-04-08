@@ -5,10 +5,11 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -28,6 +29,12 @@ public class MainActivity extends AppCompatActivity {
 
         // buat dialog update dan hapus
         ListView list_location = (ListView) findViewById(R.id.list_location);
+        list_location.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                getLocation(view, location.get(position).getId());
+            }
+        });
         list_location.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, final View view, final int position, final long id) {
@@ -75,6 +82,16 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_settings) {
+            startActivity(new Intent(MainActivity.this, SettingActivity.class));
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
     public void updatelVLocation(){
         this.location = db.getAllLocation();
         List<String> list = new ArrayList<>();
@@ -94,24 +111,16 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void getLocation(View v) {
-        EditText eTLocation = (EditText) findViewById(R.id.eTLocation);
-        EditText eTLatitude = (EditText) findViewById(R.id.eTLatitude);
-        EditText eTLongitude = (EditText) findViewById(R.id.eTLongitude);
-        EditText eTRange = (EditText) findViewById(R.id.eTRange);
-
+    public void getLocation(View v, String id) {
         L = new LocationModel();
-        L.setLocation(eTLocation.getText().toString());
-        L.setLatitude(eTLatitude.getText().toString());
-        L.setLongitude(eTLongitude.getText().toString());
-        L.setRange(eTRange.getText().toString());
+        L.setId(id);
 
         db.open();
         L = db.getLocation(L);
         db.close();
         AlertDialog ad;
         ad = new AlertDialog.Builder(this).create();
-        ad.setMessage("Lokasi=" + L.getLocation() + "\nLatitude=" + L.getLatitude()+ "\nLongitude=" + L.getLongitude() + "\nRange=" + L.getRange());
+        ad.setMessage("Lokasi\t\t\t\t= " + L.getLocation() + "\nLatitude\t\t\t= " + L.getLatitude()+ "\nLongitude\t= " + L.getLongitude() + "\nRange\t\t\t\t= " + L.getRange());
         ad.show();
     }
 
@@ -131,7 +140,8 @@ public class MainActivity extends AppCompatActivity {
         });
         delete.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {}
+            public void onClick(DialogInterface dialog, int which) {
+            }
         });
         delete.show();
     }
@@ -144,5 +154,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main, menu);
+        return true;
     }
 }
