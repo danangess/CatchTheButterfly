@@ -8,4 +8,5 @@
     <string name="location_name">Location Name</string>
     <string name="save">Save</string>
     <string name="insert_data">Insert Data</string>
+    <string name="settings">Settings</string>
 </resources>
