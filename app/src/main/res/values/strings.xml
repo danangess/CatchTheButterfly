@@ -14,4 +14,9 @@
     <string name="mute">Mute</string>
     <string name="apply">APPLY</string>
     <string name="defaults">DEFAULT</string>
+    <string name="target_location">Target Location</string>
+    <string name="dot">...</string>
+    <string name="coordinate">Coordinate</string>
+    <string name="my_location">My Location</string>
+    <string name="arrow_"><![CDATA[===]}>]]></string>
 </resources>

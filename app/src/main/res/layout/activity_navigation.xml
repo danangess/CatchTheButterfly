@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="id.miehasiswa.game.catchthebutterfly.NavigationActivity">
+    <TextView
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/target_location"
+        android:id="@+id/tVtargetlocation"
+        android:layout_gravity="center_horizontal|top" />
+
+    <TextView
+        android:layout_marginTop="@dimen/place_autocomplete_powered_by_google_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/dot"
+        android:id="@+id/tVTargetLocation"
+        android:layout_gravity="center_horizontal|top" />
+
+    <TextView
+        android:layout_marginTop="@dimen/place_autocomplete_prediction_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/coordinate"
+        android:id="@+id/tvCoordinateTarget"
+        android:layout_gravity="center_horizontal|top" />
+
+
+
+    <TextView
+        android:layout_marginBottom="@dimen/place_autocomplete_prediction_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/dot"
+        android:id="@+id/tVFar"
+        android:layout_gravity="center" />
+    <TextView
+        android:rotation="-90"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/arrow_"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:id="@+id/tVArrow"
+        android:layout_gravity="center" />
+
+
+
+
+    <TextView
+        android:layout_marginBottom="@dimen/place_autocomplete_prediction_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/my_location"
+        android:id="@+id/tVmylocation"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <TextView
+        android:layout_marginBottom="@dimen/place_autocomplete_powered_by_google_height"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/dot"
+        android:id="@+id/tVMyLocation"
+        android:layout_gravity="center_horizontal|bottom" />
+
+    <TextView
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/coordinate"
+        android:id="@+id/tvMyCoordinate"
+        android:layout_gravity="center_horizontal|bottom" />
+
+</FrameLayout>

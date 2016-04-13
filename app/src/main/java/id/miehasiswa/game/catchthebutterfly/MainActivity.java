@@ -20,21 +20,31 @@ import java.util.List;
  */
 public class MainActivity extends AppCompatActivity {
     DbCatchTheButterfly db = new DbCatchTheButterfly(this);
-    LocationModel L = new LocationModel();
     ArrayList<LocationModel> location;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        updatelVLocation();
 
         // buat dialog update dan hapus
         ListView list_location = (ListView) findViewById(R.id.list_location);
+        list_location.setClickable(true);
         list_location.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                getLocation(view, location.get(position).getId());
+                Intent intent = new Intent(MainActivity.this, NavigationActivity.class);
+                intent.putExtra("id", location.get(position).getId());
+                intent.putExtra("location", location.get(position).getLocation());
+                intent.putExtra("latitude", location.get(position).getLatitude());
+                intent.putExtra("longitude", location.get(position).getLongitude());
+                intent.putExtra("range", location.get(position).getRange());
+                MainActivity.this.startActivity(intent);
+                finish();
             }
         });
+
+        list_location.setLongClickable(true);
         list_location.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, final View view, final int position, final long id) {
@@ -111,25 +121,6 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 
-    public void getLocation(View v, String id) {
-        L = new LocationModel();
-        L.setId(id);
-
-        db.open();
-        L = db.getLocation(L);
-        db.close();
-        AlertDialog ad;
-        ad = new AlertDialog.Builder(this).create();
-        ad.setMessage("Lokasi\t\t\t\t= " + L.getLocation() + "\nLatitude\t\t\t= " + L.getLatitude()+ "\nLongitude\t= " + L.getLongitude() + "\nRange\t\t\t\t= " + L.getRange());
-        ad.show();
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        updatelVLocation();
-    }
-
     @Override
     public void onBackPressed() {
         AlertDialog.Builder delete = new AlertDialog.Builder(MainActivity.this);
@@ -140,8 +131,7 @@ public class MainActivity extends AppCompatActivity {
         });
         delete.setNegativeButton("No", new DialogInterface.OnClickListener() {
             @Override
-            public void onClick(DialogInterface dialog, int which) {
-            }
+            public void onClick(DialogInterface dialog, int which) {}
         });
         delete.show();
     }
